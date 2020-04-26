@@ -9,23 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
-import java.net.ResponseCache;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -158,5 +147,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    private void useless() {
+        RestApiClient rac = new RestApiClient(this);
+        rac.addOnCompletedListener(new OnCompletedListener() {
+            @Override
+            public void onComplete(String str) {
+                Log.d("deneme", str);
+                CovidJsonParser jsp = new CovidJsonParser(str);
+                CovidCountryData ctdata = jsp.getCountryData();
+                Log.d("deneme", ctdata.toString());
+            }
+        });
+        rac.execute("");
     }
 }

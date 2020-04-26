@@ -67,14 +67,14 @@ public class RestApiClient extends AsyncTask<String, Void, String> {
     }
 
     protected void onPreExecute() {
-//        dialog.setMessage("Loading ...");
-//        dialog.show();
-//        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                RestApiClient.this.cancel(true);
-//            }
-//        });
+        dialog.setMessage("Loading ...");
+        dialog.show();
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                RestApiClient.this.cancel(true);
+            }
+        });
     }
 
     protected void onProgressUpdate(Void v) {
@@ -82,5 +82,6 @@ public class RestApiClient extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String result) {
         onCompleted.onComplete(result);
+        dialog.dismiss();
     }
 }
