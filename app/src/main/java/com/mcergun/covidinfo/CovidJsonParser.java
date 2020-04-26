@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mcergun.covidinfo;
 
 //{"get":"statistics"
 //"parameters":{"country":"turkey"}

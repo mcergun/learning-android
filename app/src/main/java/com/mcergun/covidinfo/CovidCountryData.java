@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mcergun.covidinfo;
 
 public class CovidCountryData {
     public String date;

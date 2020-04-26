@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mcergun.covidinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

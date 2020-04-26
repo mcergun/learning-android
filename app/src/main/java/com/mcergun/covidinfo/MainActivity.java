@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.mcergun.covidinfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.mcergun.covidinfo.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
