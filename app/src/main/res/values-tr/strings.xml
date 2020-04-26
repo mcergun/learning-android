@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">Güncel COVID-19</string>
     <string name="main_info">Aşağıdan bilgilerini görmek istediğiniz ülkeyi ve tarihi seçiniz:</string>
-    <string name="main_country_spinner">Ülke: </string>
-    <string name="main_date_spinner">Tarih: </string>
-    <string name="single_cases">Vaka Sayısı: </string>
-    <string name="single_deaths">Ölüm Sayısı: </string>
-    <string name="single_recoveries">İyileşen Sayısı: </string>
+    <string name="main_country_spinner">Ülke</string>
+    <string name="main_date_spinner">Tarih</string>
+    <string name="single_cases">Vakalar</string>
+    <string name="single_deaths">Ölümler</string>
+    <string name="single_recoveries">İyileşenler</string>
 </resources>
