@@ -30,6 +30,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CovidJsonParser {
     String sourceStr;
     JSONArray responseJsa;
@@ -85,6 +88,22 @@ public class CovidJsonParser {
         return data;
     }
 
+    ArrayList<String> getCountryList() {
+        ArrayList<String> countries = new ArrayList<>();
+        try {
+            if (responseJsa.length() > 1) {
+                for (int i = 0; i < responseJsa.length(); ++i) {
+                    countries.add(responseJsa.getString(i));
+                }
+            } else {
+                throw new IllegalArgumentException("No results found for parameter");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return countries;
+    }
+
     protected CovidCountryData parseSingleCountry(JSONObject country) {
         CovidCountryData ctd = new CovidCountryData();
         try {
@@ -97,7 +116,7 @@ public class CovidJsonParser {
             ctd.criticalCases = cases.getInt("critical");
             // +123
             String newStr = cases.getString("new");
-            if (newStr != null) {
+            if (newStr != null && newStr != "null") {
                 ctd.newCases = Integer.parseInt(newStr.substring(1));
             } else {
                 ctd.newCases = 0;
@@ -106,7 +125,7 @@ public class CovidJsonParser {
             ctd.totalCases = cases.getInt("total");
             // +123
             newStr = deaths.getString("new");
-            if (newStr != null) {
+            if (newStr != null && newStr != "null") {
                 ctd.newDeaths = Integer.parseInt(newStr.substring(1));
             } else {
                 ctd.newDeaths = 0;

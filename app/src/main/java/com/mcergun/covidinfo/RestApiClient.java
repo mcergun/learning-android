@@ -21,10 +21,10 @@ public class RestApiClient extends AsyncTask<String, Void, String> {
     protected OkHttpClient client = new OkHttpClient();
     protected OnCompletedListener onCompleted = null;
 
-    public RestApiClient(Activity mainAct) {
-//        url = address;
-//        host = hostAddr;
-//        key = keyVal;
+    public RestApiClient(Activity mainAct, String addr, String hostAddr, String keyVal) {
+        url = addr;
+        host = hostAddr;
+        key = keyVal;
         dialog = new ProgressDialog(mainAct);
     }
 
@@ -42,16 +42,35 @@ public class RestApiClient extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... urls) {
-        // we are only interested in the first url, multi url calls are not supported
+    protected String doInBackground(String... params) {
+        // 1st parameter -> function
+        // n [0-x]
+        // 2nth parameter -> queryKey
+        // 2n + 1th parameter -> queryVal
+        if (params.length < 1) {
+            throw new IllegalArgumentException("No function parameter is supplied!");
+        }
         client = new OkHttpClient();
         Response resp = null;
-        Request request = new Request.Builder()
-            .url("https://covid-193.p.rapidapi.com/statistics?country=turkey")
-            .get()
-            .addHeader("x-rapidapi-host", "covid-193.p.rapidapi.com")
-            .addHeader("x-rapidapi-key", "c63fd2820dmsh78d8229f8c575dap1f9f83jsnc3071c1d492c")
-            .build();
+        StringBuilder urlStr = new StringBuilder(url);
+        urlStr.append('/');
+        urlStr.append(params[0]);
+        int paramsCount = (params.length - 1) / 2;
+        for (int i = 0; i < paramsCount; i++) {
+            if (i == 0) {
+                urlStr.append('?');
+            } else {
+                urlStr.append('&');
+            }
+            urlStr.append(params[i * 2 + 1]);
+            urlStr.append('=');
+            urlStr.append(params[i * 2 + 2]);
+        }
+        Request request = new Request.Builder().url(urlStr.toString()).
+                get().
+                addHeader("x-rapidapi-host", host).
+                addHeader("x-rapidapi-key", key).
+                build();
         try {
             Log.d("deneme", "1");
             resp = client.newCall(request).execute();
@@ -62,6 +81,7 @@ public class RestApiClient extends AsyncTask<String, Void, String> {
         try {
             return resp.body().string();
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

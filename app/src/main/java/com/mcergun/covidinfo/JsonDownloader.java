@@ -73,6 +73,6 @@ public class JsonDownloader extends AsyncTask<String, String, Void> {
 
     protected void onPostExecute(Void v) {
         progressDialog.dismiss();
-        ((MainActivity) act).updateCovidData(jsonData);
+//        ((MainActivity) act).updateCovidData(jsonData);
     }
 }
