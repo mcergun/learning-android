@@ -74,7 +74,7 @@ public class CovidJsonParser {
             if (responseJsa.length() >= 1) {
                 for (int i = 0; isFound && i < responseJsa.length(); i++) {
                     country = responseJsa.getJSONObject(i);
-                    isFound = country.getString("name") == countryName;
+                    isFound = country.getString("name").equals(countryName);
                 }
                 if (isFound) {
                     data = parseSingleCountry(country);
@@ -93,7 +93,10 @@ public class CovidJsonParser {
         try {
             if (responseJsa.length() > 1) {
                 for (int i = 0; i < responseJsa.length(); ++i) {
-                    countries.add(responseJsa.getString(i));
+                    String ct = responseJsa.getString(i);
+                    if (!ct.contains("&") && !ct.contains(";")) {
+                        countries.add(responseJsa.getString(i));
+                    }
                 }
             } else {
                 throw new IllegalArgumentException("No results found for parameter");

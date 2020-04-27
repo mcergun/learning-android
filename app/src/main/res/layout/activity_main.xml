@@ -139,24 +139,22 @@
         android:id="@+id/tv_single_deaths"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|top"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="#9C27B0"
         android:textIsSelectable="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_single_cases"
         app:layout_constraintEnd_toStartOf="@+id/tv_single_recoveries"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_single_cases"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_cases"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/tv_single_cases" />
 
     <TextView
         android:id="@+id/tv_single_cases"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center_horizontal|top"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="#3F51B5"
         android:textIsSelectable="true"
@@ -170,17 +168,15 @@
         android:id="@+id/tv_single_recoveries"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|top"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="#4CAF50"
         android:textIsSelectable="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_single_deaths"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_single_deaths"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_deaths"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/tv_single_deaths" />
 
     <View
         android:id="@+id/divider"
