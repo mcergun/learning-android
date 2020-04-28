@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">COVID-19 Info</string>
-    <string name="main_info">Select a country and a date below:</string>
-    <string name="main_country_spinner">Country</string>
-    <string name="main_date_spinner">Date: </string>
-    <string name="single_cases">Cases</string>
-    <string name="single_deaths">Deaths</string>
-    <string name="single_recoveries">Recoveries</string>
+    <string name="main_info">Select a country below:</string>
+    <string name="main_spinner_country">Country</string>
+    <string name="main_heading_cases">Cases</string>
+    <string name="main_heading_deaths">Deaths</string>
+    <string name="main_label_total">Total</string>
+    <string name="main_label_new">New</string>
+    <string name="main_label_active">Active</string>
+    <string name="main_label_critical">Critical</string>
+    <string name="main_label_recovered">Recovered</string>
+    <string name="main_button_detailed">Detailed view</string>
+    <string name="main_info_failure">Error!</string>
 </resources>

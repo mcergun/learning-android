@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Güncel COVID-19</string>
-    <string name="main_info">Aşağıdan bilgilerini görmek istediğiniz ülkeyi ve tarihi seçiniz:</string>
-    <string name="main_country_spinner">Ülke</string>
-    <string name="main_date_spinner">Tarih</string>
-    <string name="single_cases">Vakalar</string>
-    <string name="single_deaths">Ölümler</string>
-    <string name="single_recoveries">İyileşenler</string>
+    <string name="main_info">Bilgilerini görmek istediğiniz ülkeyi seçiniz:</string>
+    <string name="main_spinner_country">Ülke</string>
+    <string name="main_heading_cases">Vakalar</string>
+    <string name="main_heading_deaths">Ölümler</string>
+    <string name="main_label_total">Toplam</string>
+    <string name="main_label_new">Yeni</string>
+    <string name="main_label_active">Aktif</string>
+    <string name="main_label_critical">Kritik</string>
+    <string name="main_label_recovered">İyileşmiş</string>
+    <string name="main_button_detailed">Detaylı görünüm</string>
+    <string name="main_info_failure">Hata!</string>
 </resources>

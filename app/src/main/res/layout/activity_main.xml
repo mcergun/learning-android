@@ -8,51 +8,17 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tv_single_cases_caption"
+        android:id="@+id/tvCasesActive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text="@string/single_cases"
-        android:textColor="#3F51B5"
-        android:textIsSelectable="true"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_active"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_single_deaths_caption"
+        app:layout_constraintBottom_toTopOf="@+id/tvCasesCritical"
+        app:layout_constraintEnd_toStartOf="@+id/tvActiveCases"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_single_country" />
-
-    <TextView
-        android:id="@+id/tv_single_deaths_caption"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/single_deaths"
-        android:textColor="#9C27B0"
-        android:textIsSelectable="true"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_single_cases_caption"
-        app:layout_constraintEnd_toStartOf="@+id/tv_single_recoveries_caption"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_single_cases_caption"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_cases_caption"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/tv_single_recoveries_caption"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/single_recoveries"
-        android:textColor="#4CAF50"
-        android:textIsSelectable="true"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_single_deaths_caption"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_single_deaths_caption"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_deaths_caption"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelCasesNew" />
 
     <TextView
         android:id="@+id/textView3"
@@ -64,128 +30,233 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvLabelCountry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/main_country_spinner"
+        android:text="@string/main_spinner_country"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_country"
+        app:layout_constraintEnd_toStartOf="@+id/spCountry"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Spinner
-        android:id="@+id/sp_country"
+        android:id="@+id/spCountry"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLabelCountry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/tvLabelCountry"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelCountry" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/main_date_spinner"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/sp_date"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Spinner
-        android:id="@+id/sp_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/tv_single_country"
+        android:id="@+id/tvHeadingCases"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_single_date"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-    <TextView
-        android:id="@+id/tv_single_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_single_country"
+        android:text="@string/main_heading_cases"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_single_country"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_country" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelCountry" />
 
     <TextView
-        android:id="@+id/tv_single_deaths"
+        android:id="@+id/tvHeadingDeaths"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="TextView"
-        android:textColor="#9C27B0"
-        android:textIsSelectable="true"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_single_recoveries"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_single_cases"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_cases" />
+        android:text="@string/main_heading_deaths"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCasesRecovered" />
 
     <TextView
-        android:id="@+id/tv_single_cases"
+        android:id="@+id/tvDeathsTotal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#3F51B5"
-        android:textIsSelectable="true"
+        android:text="@string/main_label_total"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_single_deaths"
+        app:layout_constraintBottom_toTopOf="@+id/tvDeathsNew"
+        app:layout_constraintEnd_toStartOf="@+id/tvTotalDeaths"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_single_cases_caption" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingDeaths" />
 
     <TextView
-        android:id="@+id/tv_single_recoveries"
+        android:id="@+id/tvDeathsNew"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#4CAF50"
-        android:textIsSelectable="true"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_new"
         android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvNewDeaths"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeathsTotal" />
+
+    <TextView
+        android:id="@+id/tvLabelCaseTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_total"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvLabelCasesNew"
+        app:layout_constraintEnd_toStartOf="@+id/tvTotalCases"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingCases" />
+
+    <TextView
+        android:id="@+id/tvLabelCasesNew"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_new"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCasesActive"
+        app:layout_constraintEnd_toStartOf="@+id/tvNewCases"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelCaseTotal" />
+
+    <TextView
+        android:id="@+id/tvCasesCritical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_critical"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCasesRecovered"
+        app:layout_constraintEnd_toStartOf="@+id/tvCriticalCases"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCasesActive" />
+
+    <TextView
+        android:id="@+id/tvCasesRecovered"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/main_label_recovered"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvRecoveredCases"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCasesCritical" />
+
+    <TextView
+        android:id="@+id/tvTotalCases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLabelCaseTotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_single_deaths"
-        app:layout_constraintTop_toTopOf="@+id/tv_single_deaths" />
+        app:layout_constraintStart_toEndOf="@+id/tvLabelCaseTotal"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelCaseTotal" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="393dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/tvNewCases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLabelCasesNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelCasesNew"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelCasesNew" />
+
+    <TextView
+        android:id="@+id/tvActiveCases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCasesActive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvCasesActive"
+        app:layout_constraintTop_toTopOf="@+id/tvCasesActive" />
+
+    <TextView
+        android:id="@+id/tvCriticalCases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCasesCritical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvCasesCritical"
+        app:layout_constraintTop_toTopOf="@+id/tvCasesCritical" />
+
+    <TextView
+        android:id="@+id/tvRecoveredCases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCasesRecovered"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvCasesRecovered"
+        app:layout_constraintTop_toTopOf="@+id/tvCasesRecovered" />
+
+    <TextView
+        android:id="@+id/tvTotalDeaths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDeathsTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvDeathsTotal"
+        app:layout_constraintTop_toTopOf="@+id/tvDeathsTotal" />
+
+    <TextView
+        android:id="@+id/tvNewDeaths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/main_info_failure"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDeathsNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvDeathsNew"
+        app:layout_constraintTop_toTopOf="@+id/tvDeathsNew" />
+
+    <Button
+        android:id="@+id/btnDetailedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:text="@string/main_button_detailed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeathsNew" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
