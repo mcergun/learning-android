@@ -1,9 +1,10 @@
 package com.mcergun.covidinfo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         binding = null;
     }
 
+    public void showDetailed(View v) {
+    }
+
     protected void updateSpinners() {
         RestApiClient rac = new RestApiClient(this,
                 "https://covid-193.p.rapidapi.com",
@@ -75,13 +79,8 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(String str) {
                 CovidJsonParser jsp = new CovidJsonParser(str);
                 CovidCountryData ctData = jsp.getCountryData();
-                binding.tvCasesTotal.setText(MessageFormat.format("{0}", ctData.totalCases));
-                binding.tvCasesNew.setText(MessageFormat.format("+{0}", ctData.newCases));
-                binding.tvCasesCritical.setText(MessageFormat.format("{0}", ctData.criticalCases));
-                binding.tvCasesActive.setText(MessageFormat.format("{0}", ctData.activeCases));
-                binding.tvCasesRecovered.setText(MessageFormat.format("{0}", ctData.recoveredCases));
-                binding.tvDeathsNew.setText(MessageFormat.format("+{0}", ctData.newDeaths));
-                binding.tvDeathsTotal.setText(MessageFormat.format("{0}", ctData.totalDeaths));
+                CountryInfoFragment fgt = (CountryInfoFragment) getSupportFragmentManager().findFragmentById(R.id.fgtCountryInfo);
+                fgt.updateDetails(ctData);
             }
         });
         rac.execute("statistics", "country", country);
