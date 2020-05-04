@@ -1,5 +1,6 @@
 package com.mcergun.covidinfo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -61,8 +63,11 @@ public class LineChartFragment extends Fragment {
 
     protected void showEntries(List<Entry> items, String label) {
         LineDataSet lds = new LineDataSet(items, label);
-        lds.setColor(R.color.colorPrimary);
-        lds.setLineWidth(2);
+        lds.setColor(getRandomDarkColor());
+        lds.setLineWidth(3);
+        lds.setDrawCircles(false);
+        lds.setDrawValues(false);
+        lds.setAxisDependency(YAxis.AxisDependency.LEFT);
         LineData ld = new LineData(lds);
         binding.chart.setData(ld);
         if (xAxisData != null) {
@@ -73,9 +78,26 @@ public class LineChartFragment extends Fragment {
                 }
             };
             XAxis xa = binding.chart.getXAxis();
+            binding.chart.getAxisRight().setEnabled(false);
             xa.setGranularity(5.0f);
             xa.setValueFormatter(vf);
         }
         binding.chart.invalidate();
+    }
+
+    private int getRandomDarkColor() {
+        int color = 0xFF000000;
+        final int divider = 192;
+        Random rnd = new Random();
+        int num = rnd.nextInt() % divider;
+        num = num > 0 ? num : -num;
+        color += num;
+        num = rnd.nextInt() % divider;
+        num = num > 0 ? num : -num;
+        color += num << 8;
+        num = rnd.nextInt() % divider;
+        num = num > 0 ? num : -num;
+        color += num << 16;
+        return color;
     }
 }
