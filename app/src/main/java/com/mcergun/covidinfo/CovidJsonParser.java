@@ -26,11 +26,17 @@ package com.mcergun.covidinfo;
 //    }
 //]}
 
+import androidx.core.content.res.TypedArrayUtils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class CovidJsonParser {
@@ -105,6 +111,54 @@ public class CovidJsonParser {
             e.printStackTrace();
         }
         return countries;
+    }
+
+    public ArrayList<Integer> getDailyTestCount() {
+        return getDailyCount("tests");
+    }
+
+    public ArrayList<Integer> getDailyDeathCount() {
+        return getDailyCount("deaths");
+    }
+
+    public ArrayList<Integer> getDailyCaseCount() {
+        return getDailyCount("cases");
+    }
+
+    public ArrayList<String> getDates() {
+        ArrayList<String> result = new ArrayList<>();
+        String lastDate = "";
+        try {
+            for (int i = 0; i < responseJsa.length(); i++) {
+                JSONObject jso = responseJsa.getJSONObject(i);
+                if (!jso.getString("day").equals(lastDate)) {
+                    lastDate = jso.getString("day");
+                    result.add(lastDate);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Collections.reverse(result);
+        return result;
+    }
+
+    protected ArrayList<Integer> getDailyCount(String property) {
+        ArrayList<Integer> result = new ArrayList<>();
+        String lastDate = "";
+        try {
+            for (int i = 0; i < responseJsa.length(); i++) {
+                JSONObject jso = responseJsa.getJSONObject(i);
+                if (!jso.getString("day").equals(lastDate)) {
+                    result.add(jso.getJSONObject(property).getInt("total"));
+                    lastDate = jso.getString("day");
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Collections.reverse(result);
+        return result;
     }
 
     protected CovidCountryData parseSingleCountry(JSONObject country) {

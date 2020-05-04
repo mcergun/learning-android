@@ -12,4 +12,7 @@
     <string name="main_label_recovered">İyileşmiş</string>
     <string name="main_button_detailed">Detaylı görünüm</string>
     <string name="main_info_failure">Hata!</string>
+    <string name="detailed_heading_cases">Vaka Sayısı</string>
+    <string name="detailed_heading_deaths">Ölüm Sayısı</string>
+    <string name="detailed_heading_tests">Test Sayısı</string>
 </resources>

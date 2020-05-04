@@ -13,8 +13,10 @@ import com.mcergun.covidinfo.databinding.ActivityMainBinding;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private ActivityMainBinding binding;
 
     @Override
@@ -48,6 +50,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showDetailed(View v) {
+        final String country = binding.spCountry.getSelectedItem().toString();
+        RestApiClient rac2 = new RestApiClient(this,
+                "https://covid-193.p.rapidapi.com",
+                "covid-193.p.rapidapi.com",
+                "991d939994msh71b06558d279452p158f58jsn5a76c0186017");
+        rac2.addOnCompletedListener(new OnCompletedListener() {
+            @Override
+            public void onComplete(String str) {
+                CovidJsonParser jsp = new CovidJsonParser(str);
+                ArrayList<String> dates = jsp.getDates();
+                ArrayList<Integer> cases = jsp.getDailyCaseCount();
+                ArrayList<Integer> deaths = jsp.getDailyDeathCount();
+                ArrayList<Integer> tests = jsp.getDailyTestCount();
+                // Align all data with the dates available
+                while (cases.size() < dates.size()) {
+                    cases.add(0, 0);
+                }
+                while (deaths.size() < dates.size()) {
+                    deaths.add(0, 0);
+                }
+                while (tests.size() < dates.size()) {
+                    tests.add(0, 0);
+                }
+                // Build the data for the new activity
+                Intent it = new Intent(MainActivity.this, DetailedInfoActivity.class);
+                it.putExtra(DetailedInfoActivity.DETAILED_INFO_COUNTRY, country);
+                it.putExtra(DetailedInfoActivity.DETAILED_INFO_CASES, cases);
+                it.putExtra(DetailedInfoActivity.DETAILED_INFO_DEATHS, deaths);
+                it.putExtra(DetailedInfoActivity.DETAILED_INFO_TESTS, tests);
+                it.putExtra(DetailedInfoActivity.DETAILED_INFO_DATES, dates);
+                startActivity(it);
+            }
+        });
+        rac2.execute("history", "country", country);
     }
 
     protected void updateSpinners() {
